@@ -1,52 +1,67 @@
 package com.authright.happyPrime.service.number.impl;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@RunWith(Parameterized.class)
 public class HappyPrimeServiceImplTest {
 
     private HappyPrimeServiceImpl happyPrimeServiceImpl;
+
+
+    private int inputNum;
+    private boolean isPrime;
+    private boolean isHappy;
+    private boolean isHappyPrime;
+
+    public HappyPrimeServiceImplTest(int inputNum, boolean isPrime, boolean isHappy, boolean isHappyPrime) {
+        this.inputNum = inputNum;
+        this.isHappy = isHappy;
+        this.isPrime = isPrime;
+        this.isHappyPrime = isHappyPrime;
+    }
 
     @Before
     public void setUp( ) {
         this.happyPrimeServiceImpl = new HappyPrimeServiceImpl();
     }
 
+
+    @Parameterized.Parameters(name = "{index}: input number:{0}, isPrime:{1}, isHappy:{2}, isHappyPrime: {3} ")
+    public static Iterable<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {1, false, true, false},
+                {2, true, false, false},
+                {19, true, true, true},
+                {20, false, false, false},
+                {167, true,true,true},
+                {409, true, true, true},
+                {487, true, true, true}
+        });
+    }
+
     @Test
     public void testIsHappy() {
-        assertTrue(happyPrimeServiceImpl.isHappy(1));
-        assertTrue(happyPrimeServiceImpl.isHappy(19));
-        assertFalse(happyPrimeServiceImpl.isHappy(2));
-        assertFalse(happyPrimeServiceImpl.isHappy(83));
+        assertEquals(happyPrimeServiceImpl.isHappy(this.inputNum), this.isHappy);
     }
 
 
     @Test
     public void testIsPrime() {
-        assertFalse(happyPrimeServiceImpl.isPrime(1));
-        assertTrue(happyPrimeServiceImpl.isPrime(2));
-        assertTrue(happyPrimeServiceImpl.isPrime(3));
-        assertTrue(happyPrimeServiceImpl.isPrime(7));
-        assertTrue(happyPrimeServiceImpl.isPrime(167));
-        assertTrue(happyPrimeServiceImpl.isPrime(409));
-        assertTrue(happyPrimeServiceImpl.isPrime(487));
-        assertFalse(happyPrimeServiceImpl.isPrime(9821));
+        assertEquals(happyPrimeServiceImpl.isPrime(this.inputNum), this.isPrime);
     }
 
     @Test
     public void testIsHappyPrime() {
-        assertFalse(happyPrimeServiceImpl.isHappyPrime(2));
-        assertFalse(happyPrimeServiceImpl.isHappyPrime(169));
-        assertTrue(happyPrimeServiceImpl.isHappyPrime(167));
-        assertTrue(happyPrimeServiceImpl.isHappyPrime(487));
-       ;
+        assertEquals(this.isHappyPrime, this.isHappy && this.isPrime);
+        assertEquals(happyPrimeServiceImpl.isHappyPrime(this.inputNum), this.isHappyPrime);
     }
 
 }

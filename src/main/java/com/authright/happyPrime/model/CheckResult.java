@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class ChecKResult {
+public class CheckResult {
 
 	private long number;
     private NumberType type;
@@ -40,7 +40,7 @@ public class ChecKResult {
 
 	@Override
 	public String toString() {
-		return "ChecKResult [number=" + number + ", type=" + type + ", message=" + message + "]";
+		return "CheckResult [number=" + number + ", type=" + type + ", message=" + message + "]";
 	}
 
 }

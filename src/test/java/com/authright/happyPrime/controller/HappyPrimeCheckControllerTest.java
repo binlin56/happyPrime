@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.authright.happyPrime.model.ChecKResult;
+import com.authright.happyPrime.model.CheckResult;
 import com.authright.happyPrime.service.number.HappyPrimeService;
 import com.authright.happyPrime.model.NumberType;
 
