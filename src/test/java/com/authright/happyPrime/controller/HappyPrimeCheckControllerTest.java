@@ -32,7 +32,7 @@ import com.authright.happyPrime.model.NumberType;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class HappyPrimeCheckControllerUnitTest {
+public class HappyPrimeCheckControllerTest {
 
     MockMvc mockMvc;
 
@@ -51,7 +51,7 @@ public class HappyPrimeCheckControllerUnitTest {
 
     @Test
     public void testCheckHappyPrime() throws Exception { 
-        mockMvc.perform(get("/rest/v1/happyprime").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/rest/v1/happyprime/1234").contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
             
     }

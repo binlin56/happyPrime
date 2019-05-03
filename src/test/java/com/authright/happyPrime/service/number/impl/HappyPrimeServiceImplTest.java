@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HappyPrimeServiceImplUnitTest {
+public class HappyPrimeServiceImplTest {
 
     private HappyPrimeServiceImpl happyPrimeServiceImpl;
 
