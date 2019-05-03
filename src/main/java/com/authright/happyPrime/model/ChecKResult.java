@@ -11,15 +11,15 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ChecKResult {
 
-	private int number;
+	private long number;
     private NumberType type;
     private String message;
    
-    public int getNumber() {
+    public long getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
     public NumberType getType() {

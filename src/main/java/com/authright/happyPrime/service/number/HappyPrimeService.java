@@ -8,5 +8,5 @@ import java.net.URI;
 
 public interface HappyPrimeService {
 
-	 boolean isHappyPrime(int number);
+	 boolean isHappyPrime(long number);
 }

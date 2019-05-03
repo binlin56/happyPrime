@@ -12,12 +12,12 @@ public class HappyPrimeServiceImpl implements HappyPrimeService {
     private static final Logger LOG = LogManager.getLogger(HappyPrimeServiceImpl.class);
 
 	@Override
-	public boolean isHappyPrime(int number) {
+	public boolean isHappyPrime(long number) {
 		return isPrime(number) && isHappy(number);
 	}
 
 
-	protected boolean isPrime(int n) {
+	protected boolean isPrime(long n) {
 		if (n <= 1) return false;
 		if (n == 2 || n == 3) return true;
 
@@ -26,7 +26,7 @@ public class HappyPrimeServiceImpl implements HappyPrimeService {
 			return false;
 		}
 
-		for ( int i = 5; i * i <= n; i += 6 ) {
+		for ( long i = 5; i * i <= n; i += 6 ) {
 			// odd numbers
 			if ( n % i == 0 || n % ( i + 2 ) == 0 ) {
 				return false;
@@ -36,13 +36,13 @@ public class HappyPrimeServiceImpl implements HappyPrimeService {
 		return true;
 	}
 
-	protected boolean isHappy(int num) {
+	protected boolean isHappy(long num) {
 
-		Set<Integer> unique_num = new HashSet<>();
+		Set<Long> unique_num = new HashSet<>();
 
 		while (unique_num.add(num))
 		{
-			int value = 0;
+			long value = 0;
 			while (num > 0)
 			{
 				value += Math.pow(num % 10, 2);

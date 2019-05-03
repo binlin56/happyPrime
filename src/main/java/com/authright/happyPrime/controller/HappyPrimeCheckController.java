@@ -73,15 +73,14 @@ public class HappyPrimeCheckController extends RandomGeneratorRestServiceImpl {
     @RequestMapping(value = "v1/happyprime/{number}", method = RequestMethod.GET)
     public
     @ResponseBody
-    ChecKResult checkHappyPrime(@PathVariable String number) {
+    ChecKResult checkHappyPrime(@PathVariable long number) {
     	LOG.info("check user input number: {}", number);
         
         ChecKResult checkResult =new ChecKResult();
-       
-        int userNumber = Integer.parseInt(number);	
-        checkResult.setNumber(userNumber);
+       	
+        checkResult.setNumber(number);
             
-        boolean isHappyPrime =happyPrimeService.isHappyPrime(userNumber);
+        boolean isHappyPrime =happyPrimeService.isHappyPrime(number);
         checkResult.setType(isHappyPrime? NumberType.HAPPYPRIME: NumberType.SAD);
         checkResult.setMessage("It is " + (isHappyPrime? "happy prime number" : "sad number"));
         
@@ -94,7 +93,7 @@ public class HappyPrimeCheckController extends RandomGeneratorRestServiceImpl {
             LOG.info("Response body: " + responseString);
             String cleanNumString = responseString.replaceAll("[^\\d]", "" );
             LOG.debug("cleanNumString: " + cleanNumString);
-            int randomNumber = Integer.parseInt(cleanNumString);	
+            long randomNumber = Long.parseLong(cleanNumString);	
             LOG.info("Random number: " + randomNumber);
             checkResult.setNumber(randomNumber);
            
