@@ -89,11 +89,10 @@ public class HappyPrimeCheckController extends RandomGeneratorRestServiceImpl {
     public void processResponse(ResponseEntity<String> responseEntity, CheckResult checkResult) {
     	
         if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
-            String responseString = responseEntity.getBody();
+            String responseString = responseEntity.getBody().trim();
             LOG.info("Response body: " + responseString);
-            String cleanNumString = responseString.replaceAll("[^\\d]", "" );
-            LOG.debug("cleanNumString: " + cleanNumString);
-            long randomNumber = Long.parseLong(cleanNumString);	
+           
+            long randomNumber = Long.parseLong(responseString);	
             LOG.info("Random number: " + randomNumber);
             checkResult.setNumber(randomNumber);
            
