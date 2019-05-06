@@ -32,7 +32,7 @@ public class RestTemplateConfig {
     
     @Bean("randomGeneratorRestTemplate")
     @Scope("prototype")
-    public RestTemplate getHappyPrimeRestTemplate() {
+    public RestTemplate getRandomGeneratorRestTemplate() {
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.setErrorHandler(new HttpClientResponseErrorHandler());
 
